@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shavi Kariyawasam · Product Manager</title>
+
+  <!-- ── Google Fonts ── -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- ── Stylesheets (load order matters) ──
+       1. variables  — design tokens (:root custom properties)
+       2. base       — reset, typography, shared utilities, keyframes, scroll-reveal
+       3. sections   — one file per section of the page
+       4. responsive — all @media breakpoints (must come last to override above)
+  ── -->
+  <link rel="stylesheet" href="assets/css/variables.css"/>
+  <link rel="stylesheet" href="assets/css/base.css"/>
+  <link rel="stylesheet" href="assets/css/nav.css"/>
+  <link rel="stylesheet" href="assets/css/hero.css"/>
+  <link rel="stylesheet" href="assets/css/ticker.css"/>
+  <link rel="stylesheet" href="assets/css/superpower.css"/>
+  <link rel="stylesheet" href="assets/css/experience.css"/>
+  <link rel="stylesheet" href="assets/css/skills.css"/>
+  <link rel="stylesheet" href="assets/css/work.css"/>
+  <link rel="stylesheet" href="assets/css/research.css"/>
+  <link rel="stylesheet" href="assets/css/recommendations.css"/>
+  <link rel="stylesheet" href="assets/css/contact.css"/>
+  <link rel="stylesheet" href="assets/css/responsive.css"/>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     NAV
+     Fixed top bar. Shrinks on scroll via assets/js/nav.js.
+     Email link uses mailto — update ishavindyak@gmail.com if
+     the address ever changes.
+════════════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">SK</a>
+  <ul class="nav-links">
+    <li><a href="#superpower">My Superpower</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">My Product Work</a></li>
+    <li><a href="#research">My Research</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
+  </ul>
+  <a href="mailto:ishavindyak@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════
+     HERO
+     Two-column grid:
+       Left  — name, tagline, badges, CTA buttons
+       Right — dark navy panel, canvas particles (hero.js),
+               "Impact at a Glance" stats
+════════════════════════════════════════════════════════════ -->
+<section id="hero">
+
+  <!-- Left: Introduction -->
+  <div class="hero-left">
+    <span class="hero-eyebrow">Product Manager · Turku, Finland</span>
+    <h1 class="hero-name">Shavi<br/><em>Kariyawasam</em></h1>
+    <p class="hero-title">CSPO® · CSM® · MSc ICT · 5+ Years Industry Experience</p>
+    <p class="hero-desc">I turn product ideas into systems that work in the real world.<br/>Engineering roots. QA instincts. Product mindset.</p>
+    <div class="hero-badges">
+      <span class="badge">Product Management</span>
+      <span class="badge">User-Centric Design</span>
+      <span class="badge">Quality-Driven Delivery</span>
+      <span class="badge">Global Cross-Functional Teams</span>
+      <span class="badge">B2B SaaS</span>
+      <span class="badge">AI &amp; Automation</span>
+      <span class="badge">Agile Methodologies</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#superpower" class="btn-primary">My Superpower</a>
+      <a href="#work" class="btn-outline">View Case Study</a>
+      <a href="#experience" class="btn-outline">Experience</a>
+    </div>
+  </div>
+
+  <!-- Right: Stats panel (canvas driven by hero.js) -->
+  <div class="hero-right">
+    <canvas id="hero-particles"></canvas>
+    <div class="hero-stats-wrap">
+      <div class="hero-stats-title">Impact at a<br/><em>Glance</em></div>
+      <div class="hero-stats">
+
+        <!-- Stat 1: Demo bookings -->
+        <div class="h-stat">
+          <div class="h-stat-num">2<span>×</span></div>
+          <div class="h-stat-label">Demo Bookings</div>
+          <div class="h-stat-context">July 2023 · Product Manager, PlanYear LLC</div>
+          <a href="https://planyear.ai/resources/case-study-mammoth-insurance-solutions" target="_blank" class="h-stat-link">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+            Read client case study
+          </a>
+        </div>
+
+        <div class="h-divider"></div>
+
+        <!-- Stat 2: Defect reduction + release speed -->
+        <div class="h-stat">
+          <div class="h-stat-paired">
+            <div class="h-stat-pair-item">
+              <div class="h-stat-num h-stat-num-sm">−<span>25%</span></div>
+              <div class="h-stat-pair-label">Defects</div>
+            </div>
+            <div class="h-stat-pair-sep">+</div>
+            <div class="h-stat-pair-item">
+              <div class="h-stat-num h-stat-num-sm">+<span>23%</span></div>
+              <div class="h-stat-pair-label">Release speed</div>
+            </div>
+          </div>
+          <div class="h-stat-label" style="margin-top:0.6rem">Quality &amp; Velocity · Simultaneously</div>
+          <div class="h-stat-context" style="color:rgba(255,255,255,0.72);">QE Lead · Limark Technologies</div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Legacy element, kept hidden -->
+    <div class="hero-bg-num">PM</div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     TICKER
+     Scrolling skills strip. Chips are duplicated in HTML to
+     create a seamless CSS-only loop animation.
+════════════════════════════════════════════════════════════ -->
+<div id="ticker">
+  <div class="ticker-track">
+    <span class="t-chip">Product Strategy &amp; Roadmapping <span class="t-dot"></span></span>
+    <span class="t-chip">Lifecycle Ownership <span class="t-dot"></span></span>
+    <span class="t-chip">Requirements &amp; Prioritization <span class="t-dot"></span></span>
+    <span class="t-chip">User-Centric Design <span class="t-dot"></span></span>
+    <span class="t-chip">Go-to-Market Execution <span class="t-dot"></span></span>
+    <span class="t-chip">Agile &amp; Scrum <span class="t-dot"></span></span>
+    <span class="t-chip">Stakeholder Management <span class="t-dot"></span></span>
+    <span class="t-chip">Cross-Functional Leadership <span class="t-dot"></span></span>
+    <!-- Duplicate set for seamless loop -->
+    <span class="t-chip">Product Strategy &amp; Roadmapping <span class="t-dot"></span></span>
+    <span class="t-chip">Lifecycle Ownership <span class="t-dot"></span></span>
+    <span class="t-chip">Requirements &amp; Prioritization <span class="t-dot"></span></span>
+    <span class="t-chip">User-Centric Design <span class="t-dot"></span></span>
+    <span class="t-chip">Go-to-Market Execution <span class="t-dot"></span></span>
+    <span class="t-chip">Agile &amp; Scrum <span class="t-dot"></span></span>
+    <span class="t-chip">Stakeholder Management <span class="t-dot"></span></span>
+    <span class="t-chip">Cross-Functional Leadership <span class="t-dot"></span></span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     MY SUPERPOWER
+     Dark navy, two-column.
+       Left  — copy, three trait slide-ins
+       Right — animated SVG Venn diagram
+     Animation triggered by superpower.js via IntersectionObserver.
+════════════════════════════════════════════════════════════ -->
+<section id="superpower">
+
+  <!-- Left: Copy and traits -->
+  <div class="sp-left">
+    <span class="s-label">My Superpower</span>
+    <h2 class="s-title">Built at the <em>Intersection</em></h2>
+    <p class="sp-desc" style="font-size:1.05rem; line-height:1.7; color:rgba(255,255,255,0.9);">Most product managers write requirements.<br/>I write requirements that <span style="font-style:italic; font-family:'Playfair Display',serif; font-weight:700;">anticipate failure.</span></p>
+    <p class="sp-desc">My background in quality engineering means I think in edge cases, failure modes, and integration gaps from the very beginning. By the time engineering starts building, the hard questions have already been asked.</p>
+    <p class="sp-desc">I understand systems from both sides — how they're built and how they break — which makes conversations with engineers faster and delivery smoother.</p>
+    <p class="sp-desc" style="color:rgba(255,255,255,0.9); font-weight:400;">My job is simple: understand complexity deeply and turn it into clarity for the whole team.</p>
+    <div class="sp-traits">
+      <!-- .visible added sequentially by superpower.js -->
+      <div class="sp-trait">
+        <span class="sp-trait-dot" style="background:#8AABEC"></span>
+        <div><strong>Edge cases in, surprises out</strong> — failure modes are baked into requirements before engineering starts</div>
+      </div>
+      <div class="sp-trait">
+        <span class="sp-trait-dot" style="background:#A8C4F4"></span>
+        <div><strong>Fluent on both sides</strong> — I speak the language of building and the language of breaking</div>
+      </div>
+      <div class="sp-trait">
+        <span class="sp-trait-dot" style="background:#C4D9F9"></span>
+        <div><strong>Complexity → clarity</strong> — I go deep until I fully understand, then make it simple for the whole team</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Venn diagram SVG
+       All elements start invisible (opacity:0 in superpower.css).
+       superpower.js adds .lit to each element in sequence. -->
+  <div class="sp-right">
+    <div class="sp-venn-wrap">
+      <svg id="venn-svg" viewBox="0 0 440 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow1" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="10" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <clipPath id="clip1"><circle cx="220" cy="148" r="118"/></clipPath>
+          <clipPath id="clip2"><circle cx="152" cy="272" r="118"/></clipPath>
+          <clipPath id="clip3"><circle cx="288" cy="272" r="118"/></clipPath>
+        </defs>
+
+        <!-- Circles (distinct navy shades for visual separation) -->
+        <circle class="vc vc-1" cx="220" cy="148" r="118" fill="#1E3A7A" stroke="#4B6FD4" stroke-width="1.5"/>
+        <circle class="vc vc-2" cx="152" cy="272" r="118" fill="#15306B" stroke="#3B63C4" stroke-width="1.5"/>
+        <circle class="vc vc-3" cx="288" cy="272" r="118" fill="#122860" stroke="#2F57B8" stroke-width="1.5"/>
+
+        <!-- Circle labels with company + period -->
+        <g class="vl vl-1">
+          <text x="220" y="82"  text-anchor="middle" fill="rgba(255,255,255,0.95)" font-family="'DM Mono', monospace" font-size="10" letter-spacing="2.5" font-weight="500">PRODUCT</text>
+          <text x="220" y="97"  text-anchor="middle" fill="rgba(255,255,255,0.95)" font-family="'DM Mono', monospace" font-size="10" letter-spacing="2.5" font-weight="500">MANAGEMENT</text>
+          <text x="220" y="118" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-family="'DM Sans', sans-serif" font-size="9.5" font-weight="400">PlanYear LLC</text>
+          <text x="220" y="132" text-anchor="middle" fill="rgba(255,255,255,0.38)" font-family="'DM Mono', monospace" font-size="8" letter-spacing="0.5">Oct 2022 – Aug 2024</text>
+        </g>
+        <g class="vl vl-2">
+          <text x="110" y="318" text-anchor="middle" fill="rgba(255,255,255,0.95)" font-family="'DM Mono', monospace" font-size="10" letter-spacing="2.5" font-weight="500">QUALITY</text>
+          <text x="110" y="333" text-anchor="middle" fill="rgba(255,255,255,0.95)" font-family="'DM Mono', monospace" font-size="10" letter-spacing="2.5" font-weight="500">ENGINEERING</text>
+          <text x="110" y="354" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-family="'DM Sans', sans-serif" font-size="9.5" font-weight="400">Limark Technologies</text>
+          <text x="110" y="368" text-anchor="middle" fill="rgba(255,255,255,0.38)" font-family="'DM Mono', monospace" font-size="8" letter-spacing="0.5">Dec 2019 – Sep 2022</text>
+        </g>
+        <g class="vl vl-3">
+          <text x="332" y="318" text-anchor="middle" fill="rgba(255,255,255,0.95)" font-family="'DM Mono', monospace" font-size="10" letter-spacing="2.5" font-weight="500">SOFTWARE</text>
+          <text x="332" y="333" text-anchor="middle" fill="rgba(255,255,255,0.95)" font-family="'DM Mono', monospace" font-size="10" letter-spacing="2.5" font-weight="500">ENGINEERING</text>
+          <text x="332" y="354" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-family="'DM Sans', sans-serif" font-size="9.5" font-weight="400">Virtusa (Pvt) Ltd</text>
+          <text x="332" y="368" text-anchor="middle" fill="rgba(255,255,255,0.38)" font-family="'DM Mono', monospace" font-size="8" letter-spacing="0.5">Jul – Nov 2019</text>
+        </g>
+
+        <!-- Animated orbit ring -->
+        <circle class="orbit-ring" cx="220" cy="232" r="46" stroke="rgba(147,197,253,0.5)" stroke-width="1.5" stroke-dasharray="4 6"/>
+
+        <!-- Centre badge -->
+        <circle class="vc-centre" cx="220" cy="232" r="38" fill="#0E1240"/>
+        <text class="vc-name" x="220" y="228" text-anchor="middle" fill="#F7F8FA" font-family="'Playfair Display', serif" font-size="12" font-weight="700" font-style="italic">Shavi</text>
+        <text class="vc-tag"  x="220" y="242" text-anchor="middle" fill="#93C5FD" font-family="'DM Mono', monospace" font-size="6.5" letter-spacing="2">THE EDGE</text>
+      </svg>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     EXPERIENCE
+     Dark navy, tabbed layout.
+     Tab clicks call showExp(id, element) from experience.js.
+════════════════════════════════════════════════════════════ -->
+<section id="experience">
+  <span class="s-label">01 — Experience</span>
+  <h2 class="s-title" style="color:var(--cream)">Where I've <em>Made</em> an Impact</h2>
+  <div class="s-rule gold"></div>
+
+  <div class="exp-layout">
+
+    <!-- Tab list (left column) -->
+    <div class="exp-tabs">
+      <div class="exp-tab active" onclick="showExp('py', this)">
+        <div class="exp-tab-co">PlanYear LLC</div>
+        <div class="exp-tab-role">Product Manager</div>
+        <div class="exp-tab-date">Oct 2022 – Aug 2024</div>
+      </div>
+      <div class="exp-tab" onclick="showExp('lm', this)">
+        <div class="exp-tab-co">Limark Technologies</div>
+        <div class="exp-tab-role">Assoc. Lead QA Engineer</div>
+        <div class="exp-tab-date">Dec 2019 – Sep 2022</div>
+      </div>
+      <div class="exp-tab" onclick="showExp('vt', this)">
+        <div class="exp-tab-co">Virtusa (Pvt) Ltd</div>
+        <div class="exp-tab-role">Associate Software Engineer</div>
+        <div class="exp-tab-date">Jul – Nov 2019</div>
+      </div>
+      <div class="exp-tab" onclick="showExp('ut', this)">
+        <div class="exp-tab-co">University of Turku</div>
+        <div class="exp-tab-role">Marketing Intern</div>
+        <div class="exp-tab-date">Mar – Oct 2025</div>
+      </div>
+    </div>
+
+    <!-- Content panels (right column) — only .active is visible -->
+    <div class="exp-panels">
+
+      <!-- PlanYear LLC -->
+      <div class="exp-panel active" id="exp-py">
+        <div class="exp-role">Product Manager</div>
+        <div class="exp-meta">
+          <span class="exp-meta-item"><b>Company</b> PlanYear LLC, California USA (Remote)</span>
+          <span class="exp-meta-item"><b>Period</b> Oct 2022 – Aug 2024</span>
+        </div>
+        <ul class="exp-list">
+          <li>Owned product vision, strategy, and roadmap for a <strong>B2B SaaS module (Renewals) recognised by leading US brokerages</strong> — drove a <strong>2× increase in demo bookings.</strong></li>
+          <li>Led <strong>zero-to-one delivery</strong> of a multi-state booking module: from discovery and third-party API research through to launch, eliminating recurring scheduling errors.</li>
+          <li>Equipped engineering teams with US Benefits domain knowledge to ensure development decisions aligned with business intent and user needs.</li>
+          <li>Translated requirements into <strong>user stories and Figma wireframes</strong>. Facilitated Scrum ceremonies and acted as the primary contact bridging business and technology.</li>
+          <li>Partnered with sales and leadership on <strong>go-to-market strategy</strong>, competitive intelligence, client onboarding, and third-party vendor selections.</li>
+        </ul>
+        <div class="exp-impact">
+          <div class="exp-impact-label">Renewals Feature · Client Impact (July 2023)</div>
+          <div class="exp-impact-stats">
+            <div class="exp-impact-stat">
+              <div class="exp-impact-num">2<span>×</span></div>
+              <div class="exp-impact-desc">Demo bookings in month of launch</div>
+            </div>
+            <div class="exp-impact-stat">
+              <div class="exp-impact-num">12<span>h</span></div>
+              <div class="exp-impact-desc">Saved weekly per brokerage on renewals</div>
+            </div>
+            <div class="exp-impact-stat">
+              <div class="exp-impact-num">30<span>m</span></div>
+              <div class="exp-impact-desc">To build what previously took 12+ hours</div>
+            </div>
+          </div>
+          <a href="https://planyear.ai/resources/case-study-mammoth-insurance-solutions" target="_blank" class="exp-impact-link">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+            Read client case study — Mammoth Insurance Solutions
+          </a>
+        </div>
+      </div>
+
+      <!-- Limark Technologies -->
+      <div class="exp-panel" id="exp-lm">
+        <div class="exp-role">Associate QE → Associate Lead QE</div>
+        <div class="exp-meta">
+          <span class="exp-meta-item"><b>Company</b> Limark Technologies, Colombo</span>
+          <span class="exp-meta-item"><b>Period</b> Dec 2019 – Sep 2022</span>
+        </div>
+        <ul class="exp-list">
+          <li>Re-built and led a <strong>7-member QA team</strong>. Achieved a <strong>25% defect reduction</strong> and <strong>23% increase in release frequency</strong>.</li>
+          <li>Built a <strong>Cypress/Cucumber automation framework</strong> from scratch. Designed and delivered team-wide training to raise automation capability.</li>
+          <li>Coordinated cross-functional testing (functional, regression, API, data migration), stakeholder reporting, and production releases.</li>
+        </ul>
+      </div>
+
+      <!-- Virtusa -->
+      <div class="exp-panel" id="exp-vt">
+        <div class="exp-role">Associate Software Engineer</div>
+        <div class="exp-meta">
+          <span class="exp-meta-item"><b>Company</b> Virtusa (Pvt) Ltd, Colombo</span>
+          <span class="exp-meta-item"><b>Period</b> Jul – Nov 2019</span>
+        </div>
+        <ul class="exp-list">
+          <li>Frontend development using <strong>ReactJS, JavaScript, HTML5, and CSS3</strong> within Agile delivery teams.</li>
+          <li>Built interactive UI components and collaborated with backend engineers to ship features on schedule.</li>
+        </ul>
+      </div>
+
+      <!-- University of Turku -->
+      <div class="exp-panel" id="exp-ut">
+        <div class="exp-role">Marketing Intern — CRM &amp; Process Support</div>
+        <div class="exp-meta">
+          <span class="exp-meta-item"><b>Company</b> University of Turku, Finland</span>
+          <span class="exp-meta-item"><b>Period</b> Mar – Oct 2025</span>
+        </div>
+        <ul class="exp-list">
+          <li>Managed CRM communications for <strong>1,000+ students</strong> in MS Dynamics.</li>
+          <li>Collaborated with the marketing team to bring student perspectives into digital recruitment campaigns and promotional content.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     SKILLS
+     Two-panel editorial layout (no JavaScript).
+       Left  (.skills-left)  — dark, skill category rows
+       Right (.skills-right) — light ivory, tools manifest
+════════════════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="skills-wrap">
+
+    <!-- Left panel: Core skills -->
+    <div class="skills-left sr">
+      <span class="s-label">Skills &amp; Tools</span>
+      <h2 class="s-title">What I <em>Bring</em></h2>
+      <div class="s-rule"></div>
+
+      <div class="sk-row">
+        <div class="sk-cat">Product &amp;<br/>Delivery</div>
+        <div class="sk-items">
+          <span class="sk-item">Product Strategy &amp; Roadmapping</span>
+          <span class="sk-item">Lifecycle Ownership</span>
+          <span class="sk-item">Requirements &amp; Prioritisation</span>
+          <span class="sk-item">User-Centric Design</span>
+          <span class="sk-item">Go-to-Market</span>
+          <span class="sk-item">Agile / Scrum</span>
+          <span class="sk-item">Stakeholder Management</span>
+          <span class="sk-item">Cross-functional Leadership</span>
+          <span class="sk-item">Third-party API Integration</span>
+        </div>
+      </div>
+
+      <div class="sk-row">
+        <div class="sk-cat">Quality<br/>Assurance</div>
+        <div class="sk-items">
+          <span class="sk-item">QA Strategy</span>
+          <span class="sk-item">Test Design &amp; Execution</span>
+          <span class="sk-item">Functional Testing</span>
+          <span class="sk-item">Regression Testing</span>
+          <span class="sk-item">API Testing</span>
+          <span class="sk-item">Integration Testing</span>
+          <span class="sk-item">Data Migration Testing</span>
+        </div>
+      </div>
+
+      <div class="sk-row">
+        <div class="sk-cat">Automation &amp;<br/>Engineering</div>
+        <div class="sk-items">
+          <span class="sk-item">Test Automation</span>
+          <span class="sk-item">BDD / Gherkin</span>
+          <span class="sk-item">Frontend Development</span>
+          <span class="sk-item">Database Querying</span>
+        </div>
+      </div>
+
+      <div class="sk-row">
+        <div class="sk-cat">Languages</div>
+        <div class="sk-lang-val">
+          <span class="sk-lang-entry">English <span>Full professional</span></span>
+          <span class="sk-lang-entry">Finnish <span>A2 (CEFR) · improving</span></span>
+          <span class="sk-lang-entry">Sinhala <span>Native</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right panel: Tools -->
+    <div class="skills-right">
+      <div class="tools-eyebrow">Tools I Work With</div>
+
+      <div class="tool-cat">
+        <div class="tool-cat-label">Project &amp; Design</div>
+        <div class="tool-names">
+          <span class="tool-name">Jira</span>
+          <span class="tool-name">Confluence</span>
+          <span class="tool-name">Figma</span>
+          <span class="tool-name">InVision</span>
+          <span class="tool-name">GitMind</span>
+          <span class="tool-name">XMind</span>
+        </div>
+      </div>
+
+      <div class="tool-cat">
+        <div class="tool-cat-label">Testing &amp; Development</div>
+        <div class="tool-names">
+          <span class="tool-name">Zephyr</span>
+          <span class="tool-name">Cypress</span>
+          <span class="tool-name">Cucumber</span>
+          <span class="tool-name">Postman</span>
+          <span class="tool-name">Swagger</span>
+          <span class="tool-name">Git</span>
+          <span class="tool-name">Bitbucket</span>
+          <span class="tool-name">Jenkins</span>
+        </div>
+      </div>
+
+      <div class="tool-cat">
+        <div class="tool-cat-label">Infrastructure &amp; IDEs</div>
+        <div class="tool-names">
+          <span class="tool-name">AWS</span>
+          <span class="tool-name">VS Code</span>
+          <span class="tool-name">IntelliJ IDEA</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     MY PRODUCT WORK
+     Collapsible case study card.
+     toggleCase() in work.js handles open/close.
+     The sticky collapse bar (#sticky-collapse, below footer)
+     appears when scrolled past the card header while open.
+════════════════════════════════════════════════════════════ -->
+<section id="work">
+  <span class="s-label">02 — My Product Work</span>
+  <h2 class="s-title">Products I've <em>Shaped</em></h2>
+  <p class="s-sub">From domain research and asking the right questions, through third-party evaluation and cross-functional delivery, to measuring what actually changed for real users.</p>
+  <div class="s-rule"></div>
+
+  <div class="case-study sr" id="case-booking">
+
+    <!-- Card header — always visible, clicking opens/closes body -->
+    <div class="case-head case-toggle" onclick="toggleCase()" aria-expanded="false">
+      <div class="case-eyebrow">
+        <span class="case-num">01 · Case Study</span>
+        <span class="case-co">PlanYear LLC · B2B SaaS</span>
+      </div>
+      <div class="case-head-main">
+        <h3 class="case-title">Consultation Booking — <em>Zero to One</em></h3>
+        <p class="case-tagline">Transforming messy, manual scheduling into an automated, timezone-aware booking system for US benefits consultants and employees.</p>
+      </div>
+
+      <!-- At-a-Glance strip -->
+      <div class="glance-strip">
+        <div class="glance-item">
+          <div class="glance-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="glance-content">
+            <div class="glance-label">Problem</div>
+            <div class="glance-value">Manual scheduling causing missed requests &amp; timezone chaos</div>
+          </div>
+        </div>
+        <div class="glance-divider"></div>
+        <div class="glance-item">
+          <div class="glance-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <div class="glance-content">
+            <div class="glance-label">Approach</div>
+            <div class="glance-value">Discovery &amp; scoping · Vendor evaluation · Cross-functional delivery</div>
+          </div>
+        </div>
+        <div class="glance-divider"></div>
+        <div class="glance-item">
+          <div class="glance-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <div class="glance-content">
+            <div class="glance-label">Outcome</div>
+            <div class="glance-value">Eliminated manual scheduling — automated, timezone-aware, zero back-and-forth</div>
+          </div>
+        </div>
+        <div class="glance-divider"></div>
+        <div class="glance-item">
+          <div class="glance-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="glance-content">
+            <div class="glance-label">Role</div>
+            <div class="glance-value">Product Manager · Full ownership from discovery to launch</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expand CTA -->
+      <div class="case-expand-cta">
+        <div class="case-chevron" id="case-chevron">
+          <span class="chevron-label">Read case study</span>
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M4 6.5L9 11.5L14 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collapsible case study body — work.js adds/removes .open -->
+    <div class="case-body case-collapsible" id="case-body">
+
+      <span class="case-slabel">Background &amp; Why Now</span>
+      <div class="case-context">
+        <p>The platform's existing scheduling capability had grown beyond what it was originally designed to handle. Consultants were managing an increasing volume of booking requests manually, and the system could not accommodate multi-timezone scheduling or distribute workload across a team automatically — everything funnelled through a single point of contact who then reassigned calls by hand.</p>
+        <p style="margin-top:0.85rem;">Usage patterns and direct consultant feedback confirmed that scheduling was among the most heavily used features during the annual <strong>renewal period</strong> — typically the start of the year. Shipping this feature before renewals began was a clear, time-bound priority.</p>
+      </div>
+
+      <span class="case-slabel">User Personas · Problem Space</span>
+      <p class="case-persona-note">The following personas are representative composites drawn from direct conversations with benefits consultants during the discovery process.</p>
+      <div class="persona-grid">
+        <div class="persona">
+          <div class="persona-role">Benefits Consultant · Detroit</div>
+          <p>"I get many consultation requests by email, and after holidays my inbox is overwhelming. Auto-replies help temporarily, but they don't provide a good experience for clients."</p>
+        </div>
+        <div class="persona">
+          <div class="persona-role">Lead Benefits Consultant · San Mateo</div>
+          <p>"With clients across time zones, some calls get booked at really odd hours. I spend hours reassigning them to my team — I want more time growing my team, not scheduling calls."</p>
+        </div>
+        <div class="persona">
+          <div class="persona-role">Employee · San Mateo</div>
+          <p>"Booking appointments with the brokerage takes too long. I'm sometimes unsure if I'm even contacting the right person about my benefits."</p>
+        </div>
+      </div>
+
+      <span class="case-slabel">My Approach</span>
+      <div class="approach-grid">
+        <div class="approach-item">
+          <div class="approach-n">1</div>
+          <div class="approach-body"><strong>Requirement Analysis</strong>Collaborated with design, engineering, and QA leads to define the problem precisely before writing a single requirement — clarifying consultant routing logic, feature placement, and availability management. Used MoSCoW to prioritise scope.</div>
+        </div>
+        <div class="approach-item">
+          <div class="approach-n">2</div>
+          <div class="approach-body"><strong>Build vs. Buy Evaluation</strong>Assessed cost, time, and resource impact of in-house vs. third-party. Evaluated the existing scheduling integration alongside other providers, assessing each against the hard requirements: round-robin assignment, multi-resource booking, custom availability rules, and multi-timezone support. The existing solution did not meet all requirements, so a broader market evaluation followed.</div>
+        </div>
+        <div class="approach-item">
+          <div class="approach-n">3</div>
+          <div class="approach-body"><strong>OnSched Selected</strong>Arranged a live demo and sandbox access to validate the APIs hands-on before committing. OnSched's round-robin logic, multi-resource booking, custom availability, and timezone handling covered every requirement. Their responsiveness during evaluation was also a signal of the partnership to come.</div>
+        </div>
+        <div class="approach-item">
+          <div class="approach-n">4</div>
+          <div class="approach-body"><strong>API Architecture Decision</strong>The selected API used a hierarchical data model that needed to be mapped thoughtfully onto the platform's multi-tenant structure — spanning environments, client organisations, and individual consultant profiles. I designed the mapping to ensure clean data isolation and correct routing across the platform, a decision that shaped how the integration scaled.</div>
+        </div>
+        <div class="approach-item">
+          <div class="approach-n">5</div>
+          <div class="approach-body"><strong>Cross-Functional Delivery &amp; Vendor Collaboration</strong>Collaborated with design on wireframes and supported engineering through sprints. When API defects emerged during development, I escalated directly to the vendor — joining calls with their engineering team to resolve issues in real time. Several bugs were fixed on the spot, keeping delivery on track without workarounds accumulating in the codebase.</div>
+        </div>
+      </div>
+
+      <span class="case-slabel">The Solution</span>
+      <div class="sol-cols">
+        <div class="sol-col">
+          <div class="sol-col-label">For Consultants — BenAdmin Portal</div>
+          <ul class="sol-list">
+            <li>Create profiles with timezone, availability hours, and assigned employer groups</li>
+            <li>Scheduling APIs triggered on save — profiles maintained automatically</li>
+            <li>Calendar sync enables real-time availability management</li>
+            <li>Mark unavailability in advance — no requests slip through on holidays</li>
+          </ul>
+        </div>
+        <div class="sol-col">
+          <div class="sol-col-label">For Employees — BenGuides Portal</div>
+          <ul class="sol-list">
+            <li>One-click "Benefits Consultation" entry point in the BenGuide</li>
+            <li>Automatic timezone matching and availability checking</li>
+            <li>Balanced round-robin assignment ensures even consultant workload</li>
+            <li>Automated confirmation emails sent on booking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="outcomes">
+        <div class="outcome">
+          <svg class="outcome-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="outcome-text">Eliminated hours of weekly manual reassignment — lead consultants freed to grow their teams, not manage calendars</div>
+        </div>
+        <div class="outcome">
+          <svg class="outcome-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          <div class="outcome-text">Cross-timezone scheduling fully automated — zero manual intervention across distributed consultant teams</div>
+        </div>
+        <div class="outcome">
+          <svg class="outcome-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <div class="outcome-text">Employees routed to the right consultant automatically — no uncertainty, no wrong-person emails</div>
+        </div>
+        <div class="outcome">
+          <svg class="outcome-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="outcome-text">Delivered before the annual renewal period — the highest-traffic window — meeting the strategic deadline</div>
+        </div>
+      </div>
+
+      <span class="case-slabel">What I'd Do Differently</span>
+      <div class="case-reflection">
+        <p>Looking back, I was managing multiple features in parallel and the sequencing could have been sharper. Prioritising the features in a different order would have given each more breathing room and sharper focus during delivery. This shaped how I approach roadmap sequencing: I now ask not just "what's most needed?" but "what order creates the most space for the team to do their best work?" — and I weight strategic sequencing more explicitly when building roadmaps.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     MY RESEARCH
+     Dark navy, research card with two panels.
+════════════════════════════════════════════════════════════ -->
+<section id="research">
+  <span class="s-label">03 — Research</span>
+  <h2 class="s-title">Currently <em>Exploring</em></h2>
+  <p class="s-sub">Applying product thinking to research — working with a real company to design and test a new kind of AI-integrated PM framework.</p>
+  <div class="s-rule"></div>
+
+  <div class="research-card sr">
+    <div class="research-card-inner">
+
+      <!-- Left panel -->
+      <div class="research-left">
+        <div class="research-eyebrow">
+          <span class="research-tag">MSc Thesis · University of Turku</span>
+          <span class="research-tag">Sep 2025 – May 2026 · In Progress</span>
+        </div>
+        <h3 class="research-title">AI-Augmented Project <em>Management</em></h3>
+        <p class="research-desc">In collaboration with <strong>Tetranyde</strong>, a software company in Sri Lanka, I'm researching how AI-driven agentic systems can be practically integrated into project management workflows. The work involves two parallel streams — designing a tailored PM framework for Tetranyde based on their current processes and pain points, and then layering in agentic AI solutions to optimise and automate key parts of that framework.</p>
+        <p class="research-desc" style="margin-top:1rem;">This isn't purely theoretical. Every decision is grounded in Tetranyde's real context — their team structure, delivery challenges, and what actually needs to improve.</p>
+        <div class="research-pillars">
+          <div class="research-pillar">
+            <div class="research-pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="research-pillar-label">Tailored PM Framework</div>
+            <div class="research-pillar-sub">Designed around Tetranyde's real workflows and pain points</div>
+          </div>
+          <div class="research-pillar">
+            <div class="research-pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M3 17.5A3.5 3.5 0 006.5 21M6.5 21A3.5 3.5 0 0010 17.5M6.5 21V14M6.5 14H3M6.5 14H10"/></svg>
+            </div>
+            <div class="research-pillar-label">Agentic AI Integration</div>
+            <div class="research-pillar-sub">AI agents embedded into PM processes end-to-end</div>
+          </div>
+          <div class="research-pillar">
+            <div class="research-pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            </div>
+            <div class="research-pillar-label">Applied Research</div>
+            <div class="research-pillar-sub">Industry collaboration ensuring practical, testable outcomes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right panel -->
+      <div class="research-right">
+        <div class="research-stack">
+          <div class="research-stack-label">Key Themes</div>
+          <div class="research-stack-items">
+            <span class="r-item">AI Agents / LLMs</span>
+            <span class="r-item">Project Management Frameworks</span>
+            <span class="r-item">Process Optimisation</span>
+            <span class="r-item">Industry Collaboration</span>
+            <span class="r-item">Agentic Systems</span>
+            <span class="r-item">Software Delivery</span>
+          </div>
+          <div class="research-stack-label" style="margin-top:2rem;">Institution</div>
+          <div class="research-institution">University of Turku<br/><span>MSc (Tech) ICT · Software Engineering</span></div>
+          <div class="research-stack-label" style="margin-top:2rem;">Industry Partner</div>
+          <div class="research-institution">Tetranyde<br/><span>Software Company · Sri Lanka</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     RECOMMENDATIONS
+     3-column grid of LinkedIn recommendation cards.
+     Last card always spans full width (CSS rule in recommendations.css).
+════════════════════════════════════════════════════════════ -->
+<section id="recommendations">
+  <div class="rec-bg">"</div>
+  <span class="s-label">04 — Colleagues Say</span>
+  <h2 class="s-title" style="color:var(--ink)">What People <em>Remember</em> Working With Me</h2>
+  <div class="s-rule gold"></div>
+
+  <div class="rec-grid">
+    <div class="rec-card sr sr-d1">
+      <span class="rec-qmark">"</span>
+      <p class="rec-text">Shavindya is one of the most hard working, self-motivated people I've had the pleasure of working with. Having worked with her on taking a product from zero-to-one, I've seen first-hand her ability to break down ambiguous and complex problems into manageable chunks to deliver impactful solutions. Data and logic consistently drive her decision-making. She always excels at meeting goals with very little guidance. Shavindya is truly a natural as a product manager.</p>
+      <div class="rec-author">
+        <div class="rec-av">AK</div>
+        <div>
+          <div class="rec-name">Andrea Kopczynski</div>
+          <div class="rec-role">Product Manager</div>
+          <div class="rec-company">Direct Manager · PlanYear</div>
+        </div>
+      </div>
+    </div>
+    <div class="rec-card sr sr-d2">
+      <span class="rec-qmark">"</span>
+      <p class="rec-text">Shavindya brings empathy for users and customers to every product discussion — she always advocates for solving problems from the user's perspective. She can quickly synthesize ambiguous or conflicting data into clear recommendations. Her background in engineering allows her to seamlessly align with the development team. She maintains a positive attitude under pressure. I'm confident she will continue to deliver tremendous value in her PM career.</p>
+      <div class="rec-author">
+        <div class="rec-av">DP</div>
+        <div>
+          <div class="rec-name">Daniel Poletti</div>
+          <div class="rec-role">Senior Product Manager</div>
+          <div class="rec-company">Direct Manager · PlanYear</div>
+        </div>
+      </div>
+    </div>
+    <div class="rec-card sr sr-d3">
+      <span class="rec-qmark">"</span>
+      <p class="rec-text">Shavindya's ability to master complex areas and bridge the gap between technical teams and stakeholders is remarkable. She effectively collaborated across multiple functions, guiding projects from concept to launch. Her adaptability in handling evolving customer needs showcases her strong analytical skills and accountability. Shavindya is a highly valuable team member whose skills and dedication consistently drive positive outcomes.</p>
+      <div class="rec-author">
+        <div class="rec-av">SN</div>
+        <div>
+          <div class="rec-name">Senthil Nagarajan</div>
+          <div class="rec-role">Co-Founder</div>
+          <div class="rec-company">Direct Manager · PlanYear</div>
+        </div>
+      </div>
+    </div>
+    <div class="rec-card sr sr-d1">
+      <span class="rec-qmark">"</span>
+      <p class="rec-text">I have had the privilege of closely collaborating with Shavindya as product manager. She excels as a collaborator, consistently embracing fresh ideas and constructive feedback. She possesses a keen eye for UX design, and her commitment to achieving exceptional customer outcomes is immeasurable. Coupled with her solid technical background, she is an ideal partner for engineering — receptive to developer input and adept at clearly articulating the product mission.</p>
+      <div class="rec-author">
+        <div class="rec-av">DT</div>
+        <div>
+          <div class="rec-name">David Trang</div>
+          <div class="rec-role">Principal Designer</div>
+          <div class="rec-company">PlanYear</div>
+        </div>
+      </div>
+    </div>
+    <div class="rec-card sr sr-d2">
+      <span class="rec-qmark">"</span>
+      <p class="rec-text">I've witnessed Shavindya grow into an outstanding professional over nearly four years. She rapidly advanced from Associate Quality Engineer to lead the quality team, then seamlessly transitioned into Product Management — no small feat, managing a US-market product from Sri Lanka. Her analytical abilities, precise communication, and unparalleled dedication all contribute to her success. I wholeheartedly recommend her.</p>
+      <div class="rec-author">
+        <div class="rec-av">YL</div>
+        <div>
+          <div class="rec-name">Yohan Liyanage</div>
+          <div class="rec-role">Founder &amp; CEO</div>
+          <div class="rec-company">Altrium</div>
+        </div>
+      </div>
+    </div>
+    <div class="rec-card sr sr-d3">
+      <span class="rec-qmark">"</span>
+      <p class="rec-text">Shavindya and I worked on an InsureTech solution for a US Benefit Brokering Company. I'd highly recommend her for any role requiring great attention to detail, methodical planning, and exceptional organising skills. Her approach to work sets her apart — these qualities supported her journey from QA engineer to Product Manager and have brought clarity to development teams and stakeholders alike.</p>
+      <div class="rec-author">
+        <div class="rec-av">LP</div>
+        <div>
+          <div class="rec-name">Lasitha Petthawadu</div>
+          <div class="rec-role">Founder &amp; CEO</div>
+          <div class="rec-company">Tetranyde</div>
+        </div>
+      </div>
+    </div>
+    <!-- Last card spans full width (see .rec-grid .rec-card:last-child in recommendations.css) -->
+    <div class="rec-card sr">
+      <span class="rec-qmark">"</span>
+      <p class="rec-text">I have had the pleasure of working with Shavi at the University of Turku and can highly recommend her for roles requiring clear communication and strong organisational skills. She has a thoughtful, structured way of working and brings confidence even in fast-moving situations. She communicates with clarity, adapts easily to different audiences, and helps teams stay aligned and focused. Shavi is an asset to any organisation.</p>
+      <div class="rec-author">
+        <div class="rec-av">JT</div>
+        <div>
+          <div class="rec-name">Jemina Tyrkkö</div>
+          <div class="rec-role">Education Specialist</div>
+          <div class="rec-company">University of Turku</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════════════════════ -->
+<section id="contact">
+  <div>
+    <h2 class="contact-h">Let's build something <em>together</em></h2>
+    <p class="contact-p">Open to PM roles, collaborations, and conversations about product, AI, and what comes next.</p>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:ishavindyak@gmail.com" class="clink">✉ Email Me</a>
+    <a href="https://linkedin.com/in/shavi-kariyawasam" target="_blank" class="clink">↗ LinkedIn</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+  <span>© 2025 Shavi Kariyawasam</span>
+  <span>CSPO® · CSM® · MSc ICT in progress</span>
+  <span>Turku, Finland</span>
+</footer>
+
+<!-- ════════════════════════════════════════════════════════════
+     STICKY COLLAPSE BAR
+     Fixed to bottom of viewport. Slides up when the case study
+     is open and the card header has scrolled off screen.
+     Controlled by work.js (updateStickyBar).
+════════════════════════════════════════════════════════════ -->
+<div class="sticky-collapse" id="sticky-collapse">
+  <span class="sticky-collapse-label">Consultation Booking · Case Study</span>
+  <button class="sticky-collapse-btn" onclick="toggleCase()">
+    <svg width="14" height="14" viewBox="0 0 18 18" fill="none"><path d="M4 6.5L9 11.5L14 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Collapse
+  </button>
+</div>
+
+<!-- ── JavaScript (deferred, load order matters) ──
+     Scripts are placed at end of body so the DOM is ready.
+     experience.js must load before any tab click can fire. -->
+<script src="assets/js/nav.js"           defer></script>
+<script src="assets/js/hero.js"          defer></script>
+<script src="assets/js/superpower.js"    defer></script>
+<script src="assets/js/experience.js"    defer></script>
+<script src="assets/js/work.js"          defer></script>
+<script src="assets/js/scroll-reveal.js" defer></script>
+
+</body>
+</html>

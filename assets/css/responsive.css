@@ -1,0 +1,177 @@
+/*
+ * responsive.css
+ * ─────────────────────────────────────────────────────────────
+ * All @media breakpoints for the portfolio.
+ * Loaded last so these rules override the section-specific CSS.
+ *
+ * BREAKPOINTS
+ *   960px — tablets, landscape phones
+ *            (major layout changes: single-column, hero stats visible)
+ *   600px — phones
+ *            (tighter sizing, stacked hero stats, simplified grids)
+ *   380px — small phones (iPhone SE, older Androids)
+ *            (minimal padding, hidden labels)
+ * ─────────────────────────────────────────────────────────────
+ */
+
+/* ────────────────────────────────────────────
+   960px — TABLET / LANDSCAPE PHONE
+───────────────────────────────────────────── */
+@media (max-width: 960px) {
+
+  /* NAV */
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+
+  /* BASE */
+  section { padding: 4rem 1.5rem; }
+
+  /* HERO — stack to single column; show stats panel below */
+  #hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 7rem 1.5rem 3rem; }
+  .hero-right { display: flex; min-height: auto; padding: 2.5rem 1.5rem; }
+  .hero-stats-wrap { padding: 1.5rem; }
+  .hero-stats { flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 0; }
+  .h-stat { padding: 1.25rem 1.5rem; flex: 1; min-width: 140px; }
+  .h-divider { width: 1px; height: auto; align-self: stretch; background: rgba(255,255,255,0.08); }
+  .h-divider::after { display: none; }
+  .h-stat-num    { font-size: 2.8rem; }
+  .h-stat-num-sm { font-size: 1.8rem !important; }
+  .hero-actions  { flex-wrap: wrap; gap: 0.75rem; }
+  .btn-primary, .btn-outline { padding: 0.75rem 1.2rem; font-size: 0.75rem; }
+
+  /* SUPERPOWER */
+  #superpower { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
+  .sp-venn-wrap { max-width: 340px; margin: 0 auto; }
+
+  /* EXPERIENCE */
+  .exp-layout { grid-template-columns: 1fr; }
+  .exp-tabs {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    overflow-x: auto;
+    gap: 0.75rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .exp-tab { border-bottom: none; padding: 0.5rem 0; flex-shrink: 0; min-width: 130px; scroll-snap-align: start; }
+  .exp-tab::before { display: none; }
+  .exp-panels { padding-left: 0; }
+  .exp-impact-stats { flex-wrap: wrap; gap: 1rem; }
+  .exp-impact-stat  { min-width: 120px; }
+
+  /* SKILLS */
+  .skills-wrap  { grid-template-columns: 1fr; }
+  .skills-left  { padding: 3rem 1.5rem; }
+  .skills-right { border-left: none; border-top: 1px solid var(--silver-dark); padding: 2.5rem 1.5rem; background: var(--off-white); }
+  .sk-row       { flex-direction: column; gap: 0.6rem; padding: 1.1rem 0; }
+  .sk-cat       { width: 100%; padding-right: 0; font-size: 0.65rem; }
+  .sk-items     { width: 100%; }
+
+  /* CASE STUDY */
+  .case-head    { padding: 1.75rem 1.25rem 1.5rem; }
+  .case-body    { padding: 0 1.25rem; }
+  .persona-grid, .approach-grid { grid-template-columns: 1fr; }
+  .approach-grid .approach-item:last-child:nth-child(odd) { grid-column: auto; }
+  .sol-cols     { grid-template-columns: 1fr; }
+  .outcomes     { grid-template-columns: repeat(2, 1fr); }
+  .glance-strip { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .glance-divider { display: none; }
+  .case-expand-cta { padding-top: 1rem; }
+
+  /* RESEARCH */
+  .research-card-inner { grid-template-columns: 1fr; }
+  .research-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 2rem; }
+  .research-pillars { grid-template-columns: 1fr 1fr; }
+
+  /* RECOMMENDATIONS */
+  .rec-grid { grid-template-columns: 1fr; }
+  .rec-grid .rec-card:last-child { grid-column: auto; }
+
+  /* CONTACT + FOOTER */
+  #contact { flex-direction: column; gap: 2rem; text-align: center; padding: 3rem 1.5rem; }
+  .contact-links { justify-content: center; }
+  .clink { padding: 0.85rem 1.5rem; min-width: 140px; text-align: center; }
+  footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+
+  /* STICKY BAR */
+  .sticky-collapse { padding: 0.75rem 1.25rem; }
+  .sticky-collapse-label { font-size: 0.6rem; }
+}
+
+/* ────────────────────────────────────────────
+   600px — PHONE
+───────────────────────────────────────────── */
+@media (max-width: 600px) {
+
+  /* BASE */
+  section { padding: 3.5rem 1.25rem; }
+
+  /* HERO */
+  .hero-name { font-size: clamp(2.4rem, 10vw, 3.2rem); }
+  .hero-right { padding: 2rem 1.25rem; }
+  .hero-stats { flex-direction: column; align-items: stretch; }
+  .h-stat { padding: 1rem 1.25rem; min-width: unset; }
+  .h-divider { width: 100%; height: 1px; align-self: auto; }
+  .h-stat-paired { justify-content: flex-start; }
+  .hero-stats-title { font-size: 1.3rem; }
+
+  /* SECTIONS */
+  .s-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+  /* BADGES */
+  .hero-badges { gap: 0.4rem; }
+  .badge { font-size: 0.62rem; padding: 0.28rem 0.65rem; }
+
+  /* SUPERPOWER */
+  .sp-venn-wrap { max-width: 100%; }
+
+  /* EXPERIENCE */
+  .exp-impact-stats { flex-direction: column; }
+
+  /* SKILLS */
+  .skills-right { padding: 2rem 1.25rem; }
+  .tools-eyebrow { font-size: 0.65rem; }
+  .tool-cat-label { font-size: 0.6rem; }
+  .tool-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* CASE STUDY */
+  .case-head  { padding: 1.5rem 1rem; }
+  .case-body  { padding: 0 1rem; }
+  .glance-strip { grid-template-columns: 1fr; gap: 0.85rem; }
+  .outcomes { grid-template-columns: 1fr; }
+  .case-num, .case-co { font-size: 0.58rem; }
+
+  /* RESEARCH */
+  .research-pillars { grid-template-columns: 1fr; }
+
+  /* CONTACT */
+  #contact { padding: 2.5rem 1.25rem; }
+  .contact-h { font-size: 1.5rem; }
+  .contact-links { flex-direction: column; align-items: center; gap: 0.75rem; }
+  .clink { width: 100%; max-width: 240px; justify-content: center; }
+}
+
+/* ────────────────────────────────────────────
+   380px — SMALL PHONE (iPhone SE etc.)
+───────────────────────────────────────────── */
+@media (max-width: 380px) {
+  section      { padding: 3rem 1rem; }
+  .hero-left   { padding: 6rem 1rem 2.5rem; }
+  .hero-right  { padding: 1.75rem 1rem; }
+  .hero-name   { font-size: 2.4rem; }
+  .s-title     { font-size: 1.6rem; }
+  nav          { padding: 0.85rem 1rem; }
+  .nav-logo    { font-size: 0.9rem; }
+  .nav-cta     { font-size: 0.65rem; padding: 0.45rem 0.85rem; }
+  .case-head   { padding: 1.25rem 0.85rem; }
+  .case-body   { padding: 0 0.85rem; }
+  .h-stat-num  { font-size: 2.2rem; }
+  /* Hide label, show only button in sticky bar */
+  .sticky-collapse { padding: 0.65rem 1rem; }
+  .sticky-collapse-label { display: none; }
+}

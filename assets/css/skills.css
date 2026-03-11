@@ -1,0 +1,149 @@
+/*
+ * skills.css
+ * ─────────────────────────────────────────────────────────────
+ * Skills section — editorial two-panel layout.
+ * No JavaScript — purely CSS.
+ *
+ * Left  (.skills-left)  — dark navy, skill category rows
+ * Right (.skills-right) — light ivory, tools manifest
+ * ─────────────────────────────────────────────────────────────
+ */
+
+#skills {
+  background: var(--off-white);
+  border-top: 1px solid var(--silver);
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Side-by-side panels */
+.skills-wrap {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  min-height: 0;
+}
+
+/* ── Left panel ── */
+.skills-left { background: var(--ink); padding: 4rem; }
+.skills-left .s-label  { color: rgba(255, 255, 255, 0.6); }
+.skills-left .s-title  { color: var(--white); margin-bottom: 0.5rem; }
+.skills-left .s-rule   { background: var(--blue-light); margin-bottom: 2.5rem; }
+
+/* Each row: category label + pill tags */
+.sk-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.sk-row:first-of-type { border-top: 1px solid rgba(255, 255, 255, 0.06); }
+
+/* Category label (left column) */
+.sk-cat {
+  width: 190px;
+  flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  padding-right: 1.5rem;
+  line-height: 1.6;
+  padding-top: 0.15rem;
+}
+
+/* Pill tags (right column) */
+.sk-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.sk-item {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.7rem;
+  border-radius: 3px;
+  line-height: 1.5;
+  transition: background 0.2s, color 0.2s;
+}
+.sk-item:hover { background: rgba(255, 255, 255, 0.1); color: var(--white); }
+
+/* Language entries (inline, within sk-row) */
+.sk-lang-val {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+.sk-lang-entry {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+.sk-lang-entry span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-left: 0.4rem;
+  font-weight: 400;
+}
+
+/* ── Right panel ── */
+.skills-right {
+  background: #F2F3F7;
+  border-left: 1px solid var(--silver);
+  padding: 4rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* "Tools & Platforms" heading with trailing rule */
+.tools-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+}
+.tools-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--silver);
+}
+
+/* Tool category groups */
+.tool-cat { margin-bottom: 1.5rem; }
+.tool-cat:last-child { margin-bottom: 0; }
+
+.tool-cat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 0.55rem;
+  font-weight: 500;
+}
+
+.tool-names { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+.tool-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--silver-dark);
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}

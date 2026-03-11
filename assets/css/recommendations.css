@@ -1,0 +1,101 @@
+/*
+ * recommendations.css
+ * ─────────────────────────────────────────────────────────────
+ * LinkedIn-style recommendation cards in a 3-column grid.
+ * Last card spans full width.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+#recommendations {
+  background: var(--off-white);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--silver);
+}
+#recommendations .s-label { color: var(--blue); }
+#recommendations .s-title { color: var(--ink); }
+
+/* Large decorative quote mark in the background */
+.rec-bg {
+  position: absolute;
+  top: -4rem; right: -2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 20rem;
+  font-weight: 900;
+  color: rgba(37, 99, 235, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 3-column grid; 1px gaps filled by the grid background colour */
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--silver);
+  margin-top: 3.5rem;
+  position: relative;
+  z-index: 1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+/* Last card always spans full width */
+.rec-grid .rec-card:last-child { grid-column: 1 / -1; }
+
+.rec-card {
+  background: var(--white);
+  padding: 2.25rem;
+  transition: background 0.2s;
+}
+.rec-card:hover { background: var(--off-white); }
+
+/* Decorative opening quote */
+.rec-qmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--blue);
+  opacity: 0.25;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.rec-text {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--slate);
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+/* Author row */
+.rec-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.rec-av {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.rec-name  { font-weight: 600; font-size: 0.88rem; color: var(--ink); }
+.rec-role  { font-size: 0.73rem; color: var(--slate); margin-top: 0.15rem; }
+.rec-company {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-top: 0.15rem;
+}

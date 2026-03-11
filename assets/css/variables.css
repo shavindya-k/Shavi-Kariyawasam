@@ -1,0 +1,50 @@
+/*
+ * variables.css
+ * ─────────────────────────────────────────────────────────────
+ * All design tokens for the portfolio.
+ * Change a value here and it updates everywhere on the site.
+ *
+ * COLOUR SYSTEM
+ *   --ink / --ink-soft   Dark navy (backgrounds, headings)
+ *   --blue / --blue-*    Primary brand blue
+ *   --slate / --slate-*  Body text and secondary text
+ *   --silver / --silver-dark  Borders and dividers
+ *   --white / --off-white  Backgrounds
+ *
+ * LEGACY ALIASES
+ *   These exist for backwards-compatibility only.
+ *   Avoid using them in new code — use the proper token names above.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+:root {
+  /* ── Backgrounds ── */
+  --white:          #FFFFFF;
+  --off-white:      #F7F8FA;
+
+  /* ── Brand navy ── */
+  --ink:            #151B54;
+  --ink-soft:       #1A2260;
+
+  /* ── Brand blue ── */
+  --blue:           #2547A8;
+  --blue-light:     #4B6FD4;
+  --blue-dim:       rgba(37, 71, 168, 0.1);
+
+  /* ── Text ── */
+  --slate:          #4A5568;
+  --slate-light:    #5A6A82;
+
+  /* ── Borders & dividers ── */
+  --silver:         #E2E8F0;
+  --silver-dark:    #CBD5E1;
+  --border:         rgba(21, 27, 84, 0.1);
+  --border-light:   rgba(255, 255, 255, 0.09);
+
+  /* ── Legacy aliases (do not use in new code) ── */
+  --cream:          #F7F8FA;
+  --light-gray:     #E2E8F0;
+  --warm-gray:      #4A5568;
+  --terracotta:     #2547A8;
+  --gold:           #4B6FD4;
+}

@@ -1,0 +1,42 @@
+/*
+ * ticker.css
+ * ─────────────────────────────────────────────────────────────
+ * Horizontally scrolling skills ticker strip.
+ * Sits between the hero and superpower sections.
+ * Animation is pure CSS (no JavaScript).
+ * ─────────────────────────────────────────────────────────────
+ */
+
+#ticker {
+  background: var(--blue);
+  padding: 1.2rem 0;
+  overflow: hidden;
+}
+
+/* The track is duplicated in HTML to create a seamless loop */
+.ticker-track {
+  display: flex;
+  gap: 2rem;
+  animation: ticker 35s linear infinite;
+  white-space: nowrap;
+}
+
+.t-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Small bullet separator between chips */
+.t-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+}

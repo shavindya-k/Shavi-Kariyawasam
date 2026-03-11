@@ -1,0 +1,390 @@
+/*
+ * work.css
+ * ─────────────────────────────────────────────────────────────
+ * "My Product Work" section — case study card with collapsible
+ * body and a sticky "Collapse" bar at the bottom of the screen.
+ *
+ * Collapsible behaviour is handled by work.js:
+ *   - toggleCase()       opens/closes the case body
+ *   - updateStickyBar()  shows/hides the sticky bar on scroll
+ *
+ * When the case is open and the user has scrolled past the
+ * card header, the sticky bar slides up from the bottom so
+ * the user can always collapse without scrolling back up.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+#work {
+  background: var(--white);
+  border-top: 1px solid var(--silver);
+}
+
+/* ── Case study card ── */
+.case-study {
+  background: var(--off-white);
+  margin-top: 3rem;
+  border: 1px solid var(--silver);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* ── Card header (always visible) ── */
+.case-head {
+  padding: 2.5rem 2.5rem 2rem;
+  border-bottom: 1px solid var(--silver);
+}
+
+.case-eyebrow {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.case-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.case-co {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.case-head-main { margin-bottom: 0.25rem; }
+
+.case-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.15;
+}
+.case-title em { font-style: italic; color: var(--blue); }
+
+.case-tagline {
+  font-size: 0.95rem;
+  color: var(--slate);
+  font-weight: 300;
+  line-height: 1.65;
+  max-width: 600px;
+  margin-top: 0.6rem;
+}
+
+/* ── At-a-Glance strip ── */
+.glance-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--silver);
+  padding-top: 1.5rem;
+}
+.glance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-right: 1.25rem;
+}
+.glance-icon { flex-shrink: 0; color: var(--blue); margin-top: 0.1rem; }
+.glance-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.3rem;
+}
+.glance-value {
+  font-size: 0.8rem;
+  color: var(--ink);
+  line-height: 1.5;
+  font-weight: 400;
+}
+.glance-divider {
+  width: 1px;
+  background: var(--silver);
+  margin: 0 0.25rem;
+  align-self: stretch;
+}
+
+/* ── Expand CTA (centred at bottom of card header) ── */
+.case-expand-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--silver);
+}
+
+/* The toggle makes the whole header clickable */
+.case-toggle { cursor: pointer; user-select: none; transition: background 0.2s; }
+.case-toggle:hover { background: var(--white); }
+
+/* Pill-shaped expand/collapse button */
+.case-chevron {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--blue);
+  transition: all 0.3s;
+  background: var(--off-white);
+  border: 1px solid var(--silver);
+  border-radius: 2rem;
+  padding: 0.5rem 1.25rem;
+}
+.case-toggle:hover .case-chevron {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+.chevron-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.case-chevron svg { transition: transform 0.4s ease; }
+.case-chevron.open svg { transform: rotate(180deg); }
+
+/* ── Collapsible body ── */
+.case-body { padding: 0 2.5rem 2.5rem; }
+
+.case-collapsible {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s ease;
+}
+.case-collapsible.open {
+  max-height: 3000px;
+  opacity: 1;
+  padding-bottom: 2.5rem;
+}
+
+/* Section labels within the case body */
+.case-slabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: block;
+  margin: 2rem 0 1rem;
+}
+
+/* Background context card */
+.case-context {
+  background: var(--white);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 4px 4px 0;
+  padding: 1.25rem 1.4rem;
+}
+.case-context p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--slate);
+  font-weight: 300;
+}
+.case-context p strong { color: var(--ink); font-weight: 600; }
+
+.case-persona-note {
+  font-size: 0.78rem;
+  color: var(--slate-light);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  display: block;
+  font-weight: 300;
+}
+
+/* Reflection card */
+.case-reflection {
+  background: var(--off-white);
+  border: 1px solid var(--silver);
+  border-radius: 4px;
+  padding: 1.4rem;
+  margin-top: 0.5rem;
+}
+.case-reflection p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--slate);
+  font-weight: 300;
+}
+
+/* Personas */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--silver);
+}
+.persona { background: var(--white); padding: 1.4rem; }
+.persona-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.65rem;
+}
+.persona p {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--slate);
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Approach grid (5 steps, 2-col, last step spans full width) */
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--silver);
+}
+.approach-item {
+  background: var(--white);
+  padding: 1.4rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.approach-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 1.8rem;
+  text-align: center;
+}
+.approach-body {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--slate);
+  font-weight: 300;
+}
+.approach-body strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Solution columns */
+.sol-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.sol-col {
+  background: var(--white);
+  padding: 1.4rem;
+  border-left: 3px solid var(--blue);
+  border-radius: 0 4px 4px 0;
+}
+.sol-col-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.85rem;
+}
+.sol-list { list-style: none; }
+.sol-list li {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--slate);
+  font-weight: 300;
+  padding: 0.45rem 0 0.45rem 1.2rem;
+  border-bottom: 1px solid var(--silver);
+  position: relative;
+}
+.sol-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); }
+
+/* Outcomes grid */
+.outcomes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--silver-dark);
+  margin-top: 2rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.outcome {
+  background: var(--ink);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+.outcome-text {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 300;
+}
+.outcome-svg {
+  color: var(--blue-light);
+  flex-shrink: 0;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* ── Sticky collapse bar ──
+   Slides up from bottom when the case is open and the header
+   has scrolled out of view. Controlled by work.js. */
+.sticky-collapse {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--ink);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.sticky-collapse.visible {
+  transform: translateY(0);
+  pointer-events: all;
+}
+.sticky-collapse-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+.sticky-collapse-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sticky-collapse-btn:hover { background: rgba(255, 255, 255, 0.15); }
+.sticky-collapse-btn svg { transition: transform 0.3s ease; transform: rotate(180deg); }

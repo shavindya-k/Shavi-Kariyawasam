@@ -1,0 +1,140 @@
+/*
+ * research.css
+ * ─────────────────────────────────────────────────────────────
+ * "My Research" section — dark navy, research card layout.
+ *
+ * Left  (.research-left)  — title, description, three pillars
+ * Right (.research-right) — key themes, institution, partner
+ * ─────────────────────────────────────────────────────────────
+ */
+
+#research { background: var(--ink); }
+#research .s-label  { color: rgba(255, 255, 255, 0.5); letter-spacing: 0.22em; }
+#research .s-title  { color: var(--white); }
+#research .s-sub    { color: rgba(255, 255, 255, 0.65); }
+#research .s-rule   { background: rgba(255, 255, 255, 0.3); }
+
+/* Card */
+.research-card {
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Two-column inner layout */
+.research-card-inner {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+}
+
+/* ── Left panel ── */
+.research-left {
+  padding: 2.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.research-eyebrow {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.research-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+}
+
+.research-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.2;
+}
+.research-title em { font-style: italic; color: rgba(255, 255, 255, 0.7); }
+
+.research-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  line-height: 1.75;
+  margin-top: 1rem;
+}
+.research-desc strong { color: var(--white); font-weight: 600; }
+
+/* Three-pillar grid */
+.research-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.research-pillar {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.25rem;
+}
+.research-pillar-icon { color: var(--blue-light); margin-bottom: 0.75rem; }
+.research-pillar-icon svg { display: block; }
+.research-pillar-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.research-pillar-sub {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+/* ── Right panel ── */
+.research-right { padding: 2.5rem; }
+
+.research-stack-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+.research-stack-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.r-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+}
+
+.research-institution {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.5;
+}
+.research-institution span {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+}

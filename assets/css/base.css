@@ -1,0 +1,149 @@
+/*
+ * base.css
+ * ─────────────────────────────────────────────────────────────
+ * Global reset, body defaults, shared typography utilities,
+ * keyframe animations, and scroll-reveal classes.
+ *
+ * Applies to the whole site — nothing section-specific here.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ── */
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--off-white);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Shared section utilities ── */
+section { padding: 6rem 4rem; }
+
+.s-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.s-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+/* Accessible accent: darker on light backgrounds */
+.s-title em { font-style: italic; color: #3D5FA8; }
+
+/* Lighter accent on dark section backgrounds (contrast verified) */
+#superpower .s-title em,
+#experience .s-title em,
+#research .s-title em,
+.skills-left .s-title em { color: #7B9FDE; }
+
+.s-sub {
+  font-size: 0.98rem;
+  color: var(--slate);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-top: 0.75rem;
+}
+
+.s-rule {
+  width: 50px;
+  height: 3px;
+  background: var(--blue);
+  margin-top: 1.25rem;
+  border-radius: 2px;
+}
+.s-rule.light { background: var(--blue-light); }
+
+/* ── Shared buttons ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  padding: 0.8rem 1.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--ink); }
+
+.btn-outline {
+  display: inline-block;
+  border: 1.5px solid var(--silver-dark);
+  color: var(--ink);
+  padding: 0.8rem 1.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-dim);
+}
+
+/* ── Keyframe animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes lineGrow {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Scroll-reveal ── */
+/* Elements with .sr are invisible until they enter the viewport.
+   JavaScript in scroll-reveal.js adds .visible via IntersectionObserver. */
+.sr {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.sr.visible  { opacity: 1; transform: translateY(0); }
+.sr-d1 { transition-delay: 0.1s; }
+.sr-d2 { transition-delay: 0.2s; }
+.sr-d3 { transition-delay: 0.3s; }

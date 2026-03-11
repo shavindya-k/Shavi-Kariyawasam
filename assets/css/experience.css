@@ -1,0 +1,186 @@
+/*
+ * experience.css
+ * ─────────────────────────────────────────────────────────────
+ * Work experience section — dark navy, tabbed layout.
+ *
+ * Left  (.exp-tabs)   — clickable role tabs
+ * Right (.exp-panels) — active role detail panel
+ *
+ * Tab switching is handled by experience.js (showExp function).
+ * Active tab gets the .active class; inactive panels are hidden.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+#experience .s-label { color: rgba(255, 255, 255, 0.5); letter-spacing: 0.22em; }
+#experience .s-title { color: var(--white); }
+
+/* Two-column grid: tab list | content panel */
+.exp-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  margin-top: 3.5rem;
+}
+
+/* ── Tab list ── */
+.exp-tabs {
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+  padding-right: 2.5rem;
+}
+
+.exp-tab {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+/* Left accent bar — scales in on active */
+.exp-tab::before {
+  content: '';
+  position: absolute;
+  left: -2.5rem; top: 0; bottom: 0;
+  width: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s;
+}
+.exp-tab.active::before { transform: scaleY(1); }
+
+.exp-tab-co {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s;
+}
+.exp-tab:hover .exp-tab-co { color: var(--white); }
+.exp-tab.active .exp-tab-co { color: var(--white); }
+
+.exp-tab-role {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.15rem;
+}
+
+.exp-tab-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.25rem;
+  letter-spacing: 0.06em;
+}
+
+/* ── Content panels ── */
+.exp-panels { padding-left: 3rem; }
+
+.exp-panel { display: none; }
+.exp-panel.active { display: block; animation: fadeIn 0.35s ease; }
+
+.exp-role {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.6rem;
+}
+.exp-meta-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.exp-meta-item b {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+  margin-right: 0.4rem;
+}
+
+/* Bullet list */
+.exp-list { list-style: none; margin-top: 1.5rem; }
+.exp-list li {
+  padding: 0.85rem 0 0.85rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.93rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.65;
+  position: relative;
+}
+.exp-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+.exp-list li strong { color: var(--white); font-weight: 600; }
+
+/* Tag chips (not currently in use, kept for future) */
+.exp-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.25rem; }
+.exp-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 3px;
+}
+
+/* Impact metrics block */
+.exp-impact {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 3px solid rgba(255, 255, 255, 0.45);
+  border-radius: 0 4px 4px 0;
+}
+.exp-impact-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.85rem;
+}
+.exp-impact-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+.exp-impact-stat  { display: flex; flex-direction: column; }
+
+.exp-impact-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+}
+.exp-impact-num span { color: rgba(255, 255, 255, 0.65); }
+
+.exp-impact-desc {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 0.25rem;
+  line-height: 1.4;
+  max-width: 140px;
+}
+
+.exp-impact-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  transition: color 0.2s;
+}
+.exp-impact-link:hover { color: var(--white); }
